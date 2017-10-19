@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CoderDojo Bhaile Coimin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+<script type="text/Javascript">
+function myFunction() {
+	var alertMessage = document.getElementById("textBox").value + " is ainm duit...";
+	console.log(alertMessage);
+    alert(alertMessage);
+}
+</script>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="../index.html">CoderDojo</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="../index.html">Baile</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="projects.html">Tionscnaimh <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="canvas1.html">Cad is ainm duit</a></li>
+            <li><a href="canvas%20moving%20block.html">Bloc ag bogadh</a></li>
+            <li><a href="Canvas%202014-11-10.html">Aghaidh ar chanvas</a></li>
+          </ul>
+        </li>
+        <li><a href="../pictures.html">Pictuiri</a></li>
+        <li><a href="../information.html">Eolas</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<body>
+<form>
+Cad is ainm duit? <input type="text" id="textBox" placeholder="ainm..."/>
+</form>
+
+<p>br&uacute an cnaipe:</p>
+<button onclick="myFunction()">Anseo</button>
+
+</body>
+</html>
