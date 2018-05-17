@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Google Map</h1>
+
+<div id="mapbox" style="width:400px;height:400px;background:yellow"></div>
+
+<script>
+function myMap() {
+  var mapOptions = {
+    center: new google.maps.LatLng(53.159718, -6.548989),
+    zoom: 17,
+    mapTypeId: google.maps.MapTypeId.HYBRID
+ }
+var map = new google.maps.Map(document.getElementById("mapbox"), mapOptions);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=              AIzaSyCMBQw7jdRbNDzWacvpHFfVGV--RSH-9Qk&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+
+Go to 
+https://developers.google.com/maps/documentation/javascript/
+logged in as teicn..
+
+choose get a key to create a new one
+
+else straight to https://console.developers.google.com to manage the key
+
+-->
+
+</body>
+</html>
