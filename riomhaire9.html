@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+button {
+    width: 35px;
+}
+button#equalsStyle {
+    width: 152px;
+}
+textarea {
+    width: 146px;
+    center:
+}
+div#calculator-outline {
+    border-style: solid;
+    border-width: thin;
+    border-radius: 10px;
+    width: 156px;
+    padding: 10px;
+    margine: 10px;
+    background: gray;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<div id="calculator-outline">
+<textarea id="answerBox"></textarea>
+<br>
+  <button type="button" onclick="addNumber(1)">1</button>
+  <button type="button" onclick="addNumber(2)">2</button>
+  <button type="button" onclick="addNumber(3)">3</button>
+  <button type="button" onclick="setOperator('+')">+</button>
+<br>
+  <button type="button" onclick="addNumber(4)">4</button>
+  <button type="button" onclick="addNumber(5)">5</button>
+  <button type="button" onclick="addNumber(6)">6</button>
+  <button type="button" onclick="setOperator('-')">-</button>
+<br>
+  <button type="button" onclick="addNumber(7)">7</button>
+  <button type="button" onclick="addNumber(8)">8</button>
+  <button type="button" onclick="addNumber(9)">9</button>
+  <button type="button" onclick="setOperator('*')">*</button>
+<br>
+  <button type="button" onclick="clearScreen()">C</button>
+  <button type="button" onclick="addNumber(0)">0</button>
+  <button type="button" onclick="addNumber('.')">.</button>
+  <button type="button" onclick="setOperator('/')">/</button>
+<br>
+<button type="button" id="equalsStyle" onclick="calculateAnswer()">   =    </button>
+</div> 
+   
+<script>
+var firstNumFinishedFlag = false; // used to see if we are on to the second number
+var firstNumString = "";
+var secondNumString = "";
+var answer = "";
+var operator = "";
+
+function clearNumbers(){
+    firstNumString = "";
+    secondNumString = "";
+    firstNumFinishedFlag = false; // set up for a new calculation
+    // don't clear 'answer' because we may need it for an ongoing calculation
+}
+
+function clearScreen(){
+    document.getElementById("answerBox").innerHTML = "";
+    clearNumbers(); 
+}
+    
+function addNumber(number){
+    console.log('addNumber: ' + number);
+    if (firstNumFinishedFlag == false) { 
+        firstNumString += number.toString();
+        document.getElementById("answerBox").innerHTML = firstNumString;
+    } else {
+        secondNumString += number.toString();
+        document.getElementById("answerBox").innerHTML = firstNumString 
+        + " " + operator + " " + secondNumString;
+    }
+}
+    
+function setOperator(operatorInput) {
+    console.log('setOperator ' + operatorInput);
+    operator = operatorInput; 
+    document.getElementById("answerBox").innerHTML = firstNumString + " " + operator;
+    firstNumFinishedFlag = true; // listen for the second operand
+}
+
+document.addEventListener('keypress', function(event) {
+    console.log('keypress: ' + event.keyCode + ' was pressed');
+    if(event.keyCode == 49) { addNumber(1); }
+    else if(event.keyCode == 50) { addNumber(2); }
+    else if(event.keyCode == 51) { addNumber(3); }
+    else if(event.keyCode == 52) { addNumber(4); }
+    else if(event.keyCode == 53) { addNumber(5); }
+    else if(event.keyCode == 54) { addNumber(6); }
+    else if(event.keyCode == 55) { addNumber(7); }
+    else if(event.keyCode == 56) { addNumber(8); }
+    else if(event.keyCode == 57) { addNumber(9); }
+    else if(event.keyCode == 48) { addNumber(0); }
+    else if(event.keyCode == 46) { addNumber('.'); }
+    else if(event.keyCode == 43) { setOperator('+'); }
+    else if(event.keyCode == 45) { setOperator('-'); }
+    else if(event.keyCode == 42) { setOperator('*'); }
+    else if(event.keyCode == 47) { setOperator('/'); }
+    else if(event.keyCode == 61) { calculateAnswer(); }
+});
+    
+function calculateAnswer() {
+    if (operator == "+") {
+        answer = Number(firstNumString) + Number(secondNumString);
+    } else if (operator == "-") {
+        answer = Number(firstNumString) - Number(secondNumString);
+    } else if (operator == "*") {
+        answer = Number(firstNumString) * Number(secondNumString);
+    } else if (operator == "/") {
+        answer = Number(firstNumString) / Number(secondNumString);
+    } else {
+        answer = 9999999999; // error case, should never happen
+    }
+    // print the answer on the screen
+    document.getElementById("answerBox").innerHTML = firstNumString + " " 
+    + operator + " " + secondNumString + " = " + Number(answer);
+    clearNumbers(); // notice that we clear the numbers for a new calculation 
+                    // but don't clear the screen
+}
+</script>
+    
+</body>
+</html>

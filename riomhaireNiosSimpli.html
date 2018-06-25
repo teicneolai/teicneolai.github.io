@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div style="width:300px;background:#F9EECF">
+<h1>Simple Calculator</h1>
+    
+<p> first number <input id='number1' type='number'></p>
+<p> second number <input id='number2' type='number'></p>
+
+<p>What do you want to do?</p>
+<button type='button' onclick='addNumbers()'>+</button>
+
+<p> The answer is
+<textarea id='answerArea'></textarea>
+</p>
+</div>    
+
+<script>
+    var x, y, answer=0;
+
+    function addNumbers() {
+        x = document.getElementById('number1').value;
+        y = document.getElementById('number2').value;    
+        answer = parseFloat(x) + parseFloat(y);
+        document.getElementById('answerArea').innerHTML = answer;
+    }
+</script>
+    
+</body>
+</html>
